@@ -49,6 +49,3 @@
 
 (?) - функционал под вопросом
 
-
-
-[Заготовка прототипа](https://app.moqups.com/MrJenika/kFIFaR1SWG/view/page/aa9df7b72)
