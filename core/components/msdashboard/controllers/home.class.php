@@ -54,12 +54,7 @@ class msDashboardHomeManagerController extends modExtraManagerController
     {
         $this->addCss($this->msDashboard->config['cssUrl'] . 'mgr/main.css');
         $this->addJavascript($this->msDashboard->config['jsUrl'] . 'mgr/msdashboard.js');
-        $this->addJavascript($this->msDashboard->config['jsUrl'] . 'mgr/misc/utils.js');
-        $this->addJavascript($this->msDashboard->config['jsUrl'] . 'mgr/misc/combo.js');
-        $this->addJavascript($this->msDashboard->config['jsUrl'] . 'mgr/widgets/items.grid.js');
-        $this->addJavascript($this->msDashboard->config['jsUrl'] . 'mgr/widgets/items.windows.js');
-        $this->addJavascript($this->msDashboard->config['jsUrl'] . 'mgr/widgets/home.panel.js');
-        $this->addJavascript($this->msDashboard->config['jsUrl'] . 'mgr/sections/home.js');
+        $this->addJavascript($this->msDashboard->config['jsUrl'] . 'mgr/widgets/orders.js');
 
         $this->addHtml('<script type="text/javascript">
         msDashboard.config = ' . json_encode($this->msDashboard->config) . ';

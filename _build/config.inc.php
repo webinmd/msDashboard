@@ -11,7 +11,7 @@ if (!defined('MODX_CORE_PATH')) {
 return [
     'name' => 'msDashboard',
     'name_lower' => 'msdashboard',
-    'version' => '2.0.0',
+    'version' => '1.0.0',
     'release' => 'pl',
     // Install package to site right after build
     'install' => true,
@@ -24,10 +24,10 @@ return [
         'policies' => true,
         'policy_templates' => true,
         'resources' => false,
-        'settings' => false,
+        'settings' => true,
         'snippets' => true,
         'templates' => false,
-        'widgets' => false,
+        'widgets' => true,
     ],
     // Which elements should be static by default
     'static' => [

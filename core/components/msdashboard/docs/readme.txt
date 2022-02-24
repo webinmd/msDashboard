@@ -1,7 +1,7 @@
 --------------------
 msDashboard
 --------------------
-Author: John Doe <john@doe.com>
+Author: E. webinmd <info@webinmd.com>
 --------------------
 
-A basic Extra for MODx Revolution.
+Extra for MODx Revolution.

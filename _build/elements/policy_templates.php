@@ -5,7 +5,7 @@ return [
         'description' => 'msDashboard policy template description.',
         'template_group' => 1,
         'permissions' => [
-            'msdashboard_save' => [],
+            'msdashboard_view' => [],
         ]
     ],
 ];
