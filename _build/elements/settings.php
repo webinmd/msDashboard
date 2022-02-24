@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'some_setting' => [
-        'xtype' => 'combo-boolean',
-        'value' => true,
+    'core_path' => [
+        'xtype' => 'textfield',
+        'value' => '',
         'area' => 'msdashboard_main',
     ],
 ];

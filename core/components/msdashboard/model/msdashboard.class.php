@@ -28,7 +28,7 @@ class msDashboard
         ], $config);
 
         $this->modx->addPackage('msdashboard', $this->config['modelPath']);
-        $this->modx->lexicon->load('msdashboard:default');
+        $this->modx->lexicon->load('msdashboard');
     }
 
 }
