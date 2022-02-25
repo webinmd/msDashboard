@@ -1,38 +1,22 @@
-msDashboard.panel.Home = function (config) {
+msDashboard.grid = function (config) {
     config = config || {};
+
     Ext.apply(config, {
-        baseCls: 'modx-formpanel',
-        layout: 'anchor',
-        /*
-         stateful: true,
-         stateId: 'msdashboard-panel-home',
-         stateEvents: ['tabchange'],
-         getState:function() {return {activeTab:this.items.indexOf(this.getActiveTab())};},
-         */
-        hideMode: 'offsets',
-        items: [{
-            html: '<h2>' + _('msdashboard') + '</h2>',
-            cls: '',
-            style: {margin: '15px 0'}
-        }, {
-            xtype: 'modx-tabs',
-            defaults: {border: false, autoHeight: true},
-            border: true,
-            hideMode: 'offsets',
-            items: [{
-                title: _('msdashboard_items'),
-                layout: 'anchor',
-                items: [{
-                    html: _('msdashboard_intro_msg'),
-                    cls: 'panel-desc',
-                }, {
-                    xtype: 'msdashboard-grid-items',
-                    cls: 'main-wrapper',
-                }]
-            }]
-        }]
+        //title: _('recent_docs')
+        ,url: msDashboard.config.connector_url
+        ,baseParams: {
+            action: 'orders/getlist',
+            limit: config.limit,
+            pageSize: 10
+            fields: ['id','customer','num','cost'],
+            paging: true
+        }
     });
-    msDashboard.panel.Home.superclass.constructor.call(this, config);
+
+    msDashboard.grid.superclass.constructor.call(this, config);
 };
-Ext.extend(msDashboard.panel.Home, MODx.Panel);
-Ext.reg('msdashboard-panel-home', msDashboard.panel.Home);
+
+Ext.extend(msDashboard.grid, MODx.grid.Grid, {
+
+});
+Ext.reg('msdashboard-orders-grid', msDashboard.grid);
