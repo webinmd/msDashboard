@@ -29,6 +29,13 @@ class msDashboard
 
         $this->modx->addPackage('msdashboard', $this->config['modelPath']);
         $this->modx->lexicon->load('msdashboard');
+        $this->modx->lexicon->load('minishop2:manager');
+
+
+        if (!$this->modx->getService('miniShop2')) {
+            return $this->modx->lexicon('msdashboard_minishop_error');
+        }
+
     }
 
 }

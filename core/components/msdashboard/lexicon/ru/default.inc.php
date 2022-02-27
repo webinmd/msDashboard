@@ -7,6 +7,9 @@ $_lang['msdashboard_intro_msg'] = 'Вы можете выделять сразу
 
 
 
-$_lang['msDashboardOrders'] = 'miniShop - последние заказы';
+$_lang['msDashboardOrders'] = 'Заказы';
 $_lang['msdashboard_orders_desc'] = 'Вывод последних заказов';
 $_lang['msdashboard_simplestat_desc'] = 'Вывод родной мини статистики miniShop';
+
+
+$_lang['msdashboard_minishop_error'] = 'Компонент miniShop не установлен';

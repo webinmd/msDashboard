@@ -2,5 +2,13 @@
 
 $_lang['area_msdashboard_main'] = 'Основные';
 
-$_lang['setting_msdashboard_some_setting'] = 'Какая-то настройка';
-$_lang['setting_msdashboard_some_setting_desc'] = 'Это описание для какой-то настройки';
+$_lang['setting_msdashboard_core_path'] = 'Путь к корню компонента';
+
+$_lang['area_msdashboard_orders'] = 'Заказы';
+$_lang['setting_msdashboard_orders_fields'] = 'Поля для таблицы заказов';
+$_lang['setting_msdashboard_orders_fields_desc'] = 'Возможные значения: id,num,customer,createdon,updatedon,cost,cart_cost,delivery_cost';
+
+
+
+
+$_lang['area_msdashboard_simplestat'] = 'Простая статистика';

@@ -7,14 +7,13 @@ class msDashboardOrders extends modDashboardWidgetInterface
         //$keys = preg_replace('/\'|\"|\”|\“/','',$this->modx->getOption('settingswidget_keys'));
         $dashboard = new msDashboard($this->modx);
 
-        //if(empty($keys)) return '<p>[[%emptykeys]]</p>';
-
+        $this->controller->addCss($dashboard->config['cssUrl'].'mgr/main.css');
         $this->controller->addJavascript($dashboard->config['jsUrl'].'mgr/msdashboard.js');
         $this->controller->addJavascript($dashboard->config['jsUrl'].'mgr/widgets/orders.js');
         $this->controller->addHtml('<script type="text/javascript">
         Ext.onReady(function() {
-        	SettingsWidget.config = ' . json_encode($dashboard->config) . ';
-        	SettingsWidget.config.connector_url = "' . $dashboard->config['connectorUrl'] . '";
+        	msDashboard.config = ' . json_encode($dashboard->config) . ';
+        	msDashboard.config.connector_url = "' . $dashboard->config['connectorUrl'] . '";
 		    MODx.load({
 		        xtype: "msdashboard-orders-grid",
 		        renderTo: "msdashboard-orders-grid",
@@ -22,9 +21,7 @@ class msDashboardOrders extends modDashboardWidgetInterface
 		    });
 		});</script>');
 
-        return '<p>[[%message]]</p>
-		<br />
-		<div id="msdashboard-orders-grid"></div>';
+        return '<div id="msdashboard-orders-grid"></div>';
     }
 }
 return msDashboardOrders;
