@@ -6,9 +6,9 @@ return [
         'value' => '',
         'area' => 'msdashboard_main',
     ],
-    'orders_fields' => [
+    'order_fields' => [
         'xtype' => 'textfield',
-        'value' => 'id,num,customer,createdon,updatedon,cost,cart_cost,delivery_cost',
+        'value' => 'id,customer,num,status,cost,weight,delivery,payment,createdon,updatedon,comment',
         'area' => 'msdashboard_orders',
     ],
 ];

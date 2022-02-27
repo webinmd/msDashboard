@@ -7,7 +7,7 @@ return [
         'content' => '[[++core_path]]components/msdashboard/elements/widgets/orders.php',
         'namespace' => 'msdashboard',
         'lexicon' => 'msdashboard:default',
-        'size' => 'half',
+        'size' => 'full',
     ],
     'msDashboardSimpleStat' => [
         'description' => 'msdashboard_simplestat_desc',

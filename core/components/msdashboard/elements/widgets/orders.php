@@ -4,9 +4,17 @@ require_once MODX_CORE_PATH . 'components/msdashboard/model/msdashboard.class.ph
 class msDashboardOrders extends modDashboardWidgetInterface
 {
     public function render() {
-        //$keys = preg_replace('/\'|\"|\”|\“/','',$this->modx->getOption('settingswidget_keys'));
         $dashboard = new msDashboard($this->modx);
 
+        // minishop styles
+        $this->controller->addCss($dashboard->config['minishopCssUrl'] . 'mgr/bootstrap.buttons.css');
+        $this->controller->addCss($dashboard->config['minishopCssUrl'] . 'mgr/main.css');
+
+        // minishop js
+        $this->controller->addJavascript($dashboard->config['minishopJsUrl'].'mgr/misc/strftime-min-1.3.js');
+        $this->controller->addJavascript($dashboard->config['minishopJsUrl'].'mgr/misc/ms2.utils.js');
+
+        // component css/js
         $this->controller->addCss($dashboard->config['cssUrl'].'mgr/main.css');
         $this->controller->addJavascript($dashboard->config['jsUrl'].'mgr/msdashboard.js');
         $this->controller->addJavascript($dashboard->config['jsUrl'].'mgr/widgets/orders.js');
@@ -16,8 +24,7 @@ class msDashboardOrders extends modDashboardWidgetInterface
         	msDashboard.config.connector_url = "' . $dashboard->config['connectorUrl'] . '";
 		    MODx.load({
 		        xtype: "msdashboard-orders-grid",
-		        renderTo: "msdashboard-orders-grid",
-		        //keys: "'.$keys.'"
+		        renderTo: "msdashboard-orders-grid"
 		    });
 		});</script>');
 

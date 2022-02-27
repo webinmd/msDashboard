@@ -9,6 +9,8 @@ $_lang['msdashboard_intro_msg'] = 'Вы можете выделять сразу
 
 $_lang['msDashboardOrders'] = 'Заказы';
 $_lang['msdashboard_orders_desc'] = 'Вывод последних заказов';
+
+$_lang['msDashboardSimpleStat'] = 'Статистика';
 $_lang['msdashboard_simplestat_desc'] = 'Вывод родной мини статистики miniShop';
 
 
