@@ -26,27 +26,33 @@ class msDashboard
             'id', 'user_id', 'num', 'type', 'actions', 'color'
         ))));
 
+        $order_address_fields = array_map('trim', explode(',', $this->modx->getOption(
+            'ms2_order_address_fields',
+            null,
+            'receiver,phone',
+            true
+        )));
+
         $this->config = array_merge([
-            'corePath' => $corePath,
-            'modelPath' => $corePath . 'model/',
-            'processorsPath' => $corePath . 'processors/',
-
-            'connectorUrl' => $assetsUrl . 'connector.php',
-            'assetsUrl' => $assetsUrl,
-            'cssUrl' => $assetsUrl . 'css/',
-            'jsUrl' => $assetsUrl . 'js/',
-            'minishopJsUrl' => MODX_ASSETS_URL . 'components/minishop2/js/',
-            'minishopCssUrl' => MODX_ASSETS_URL . 'components/minishop2/css/',
-            'order_fields' => $order_fields
+            'corePath'          => $corePath,
+            'modelPath'         => $corePath . 'model/',
+            'processorsPath'    => $corePath . 'processors/',
+            'connectorUrl'      => $assetsUrl . 'connector.php',
+            'assetsUrl'         => $assetsUrl,
+            'cssUrl'            => $assetsUrl . 'css/',
+            'jsUrl'             => $assetsUrl . 'js/',
+            'minishopJsUrl'     => MODX_ASSETS_URL . 'components/minishop2/js/',
+            'minishopCssUrl'    => MODX_ASSETS_URL . 'components/minishop2/css/',
+            'order_fields'      => $order_fields,
+            'order_address_fields' => $order_address_fields
         ], $config);
-
-        $this->modx->addPackage('msdashboard', $this->config['modelPath']);
-        $this->modx->lexicon->load('msdashboard','minishop2:manager');
-
 
         if (!$this->modx->getService('miniShop2')) {
             return $this->modx->lexicon('msdashboard_minishop_error');
         }
+
+        $this->modx->lexicon->load('msdashboard','minishop2:manager');
+        $this->modx->addPackage('msdashboard', $this->config['modelPath']);
 
     }
 

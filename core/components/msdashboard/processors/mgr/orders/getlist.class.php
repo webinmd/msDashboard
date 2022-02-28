@@ -4,7 +4,6 @@ require_once MODX_CORE_PATH . 'components/minishop2/processors/mgr/orders/getlis
 class msDashboardItemGetListProcessor extends msOrderGetListProcessor
 {
 
-
 }
 
 return 'msDashboardItemGetListProcessor';

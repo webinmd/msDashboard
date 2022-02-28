@@ -11,7 +11,7 @@ require_once MODX_CORE_PATH . 'config/' . MODX_CONFIG_KEY . '.inc.php';
 require_once MODX_CONNECTORS_PATH . 'index.php';
 /** @var msDashboard $msDashboard */
 $msDashboard = $modx->getService('msDashboard', 'msDashboard', MODX_CORE_PATH . 'components/msdashboard/model/');
-$modx->lexicon->load('msdashboard:default', 'minishop2:manager');
+//$modx->lexicon->load('msdashboard:default');
 
 // handle request
 $corePath = $modx->getOption('msdashboard_core_path', null, $modx->getOption('core_path') . 'components/msdashboard/');
