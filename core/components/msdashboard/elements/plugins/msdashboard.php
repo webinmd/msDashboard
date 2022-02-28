@@ -2,12 +2,13 @@
 /** @var modX $modx */
 switch ($modx->event->name) {
 
-    case 'OnManagerPageInit':
+    case 'OnMODXInit':
 
-        if (!$msDashboard = $modx->getService('msdashboard', 'msDashboard',
-            $modx->getOption('msdashboard_core_path', null, MODX_CORE_PATH . 'components/msdashboard/') . 'model/')) {
+        /*
+        if (!$msDashboard = $modx->getService('msdashboard', 'msDashboard', MODX_CORE_PATH . 'components/msdashboard/model/')) {
             return;
         }
+        */
 
 
         break;

@@ -42,6 +42,7 @@ Ext.extend(msDashboard.ordersGrid, MODx.grid.Grid, {
             payment: {width: 75},
             address: {width: 50},
             context: {width: 50},
+            comment: {width: 50},
             actions: {width: 75, id: 'actions', renderer: miniShop2.utils.renderActions, sortable: false},
         };
 
