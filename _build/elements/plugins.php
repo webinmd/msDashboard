@@ -5,7 +5,7 @@ return [
         'file' => 'msdashboard',
         'description' => '',
         'events' => [
-            'OnMODXInit' => [],
+            'OnManagerPageBeforeRender' => [],
         ],
     ],
 ];

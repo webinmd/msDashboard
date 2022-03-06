@@ -1,7 +1,7 @@
 <?php
 require_once MODX_CORE_PATH . 'components/msdashboard/model/msdashboard.class.php';
 
-class msDashboardOrders extends modDashboardWidgetInterface
+class msDashboardFullOrdersPanel extends modDashboardWidgetInterface
 {
     public function render() {
 
@@ -18,13 +18,22 @@ class msDashboardOrders extends modDashboardWidgetInterface
         	miniShop2.config = ' . json_encode($minishopConfig) . ';
         	msDashboard.config.connector_url = "' . $dashboard->config['connectorUrl'] . '";
 		    MODx.load({
-		        xtype: "minishop2-grid-orders", 
-		        renderTo: "msdashboard-orders-grid"
+		        xtype: "minishop2-page-orders",
+                //renderTo: "msdashboard-orders-panel", 
+                /*
+		        items:[
+                    { 
+                        xtype: "minishop2-form-orders"
+                    },{ 
+                        xtype: "minishop2-grid-orders"
+                    }
+		        ] 
+		        */ 
 		    });
 		});</script>');
 
 
-        return '<div id="msdashboard-orders-grid"></div>';
+        return '<div id="msdashboard-orders-panel"></div>';
     }
 }
-return msDashboardOrders;
+return msDashboardFullOrdersPanel;

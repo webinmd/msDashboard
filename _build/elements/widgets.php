@@ -1,6 +1,14 @@
 <?php
 
 return [
+    'msDashboardFullOrdersPanel' => [
+        'description' => 'msdashboard_fullpanelorders_desc',
+        'type' => 'file',
+        'content' => '[[++core_path]]components/msdashboard/elements/widgets/fullorderspanel.php',
+        'namespace' => 'msdashboard',
+        'lexicon' => 'msdashboard:default',
+        'size' => 'full',
+    ],
     'msDashboardOrders' => [
         'description' => 'msdashboard_orders_desc',
         'type' => 'file',

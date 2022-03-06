@@ -12,6 +12,7 @@ class msDashboard
      */
     function __construct(modX &$modx, array $config = [])
     {
+
         $this->modx =& $modx;
         $corePath = MODX_CORE_PATH . 'components/msdashboard/';
         $assetsUrl = MODX_ASSETS_URL . 'components/msdashboard/';
@@ -59,7 +60,7 @@ class msDashboard
         $this->modx->lexicon->load('msdashboard','minishop2:manager');
         $this->modx->addPackage('msdashboard', $this->config['modelPath']);
 
-        $this->includeScriptAssets();
+        //$this->includeScriptAssets();
 
         if (!$this->modx->getService('miniShop2')) {
             return $this->modx->lexicon('msdashboard_minishop_error');
@@ -72,17 +73,7 @@ class msDashboard
     public function includeScriptAssets()
     {
 
-        $this->modx->controller->addJavascript($this->config['minishopJsUrl'].'mgr/minishop2.js');
-        $this->modx->controller->addJavascript($this->config['minishopJsUrl'].'mgr/misc/default.grid.js');
-        $this->modx->controller->addJavascript($this->config['minishopJsUrl'].'mgr/misc/default.window.js');
-        $this->modx->controller->addJavascript($this->config['minishopJsUrl'].'mgr/misc/strftime-min-1.3.js');
-        $this->modx->controller->addJavascript($this->config['minishopJsUrl'].'mgr/misc/ms2.utils.js');
-        $this->modx->controller->addJavascript($this->config['minishopJsUrl'].'mgr/orders/orders.window.js');
-
-
-
-        $this->modx->controller->addCss($this->config['minishopCssUrl'] . 'mgr/bootstrap.buttons.css');
-        $this->modx->controller->addCss($this->config['minishopCssUrl'] . 'mgr/main.css');
+        $this->addCss($this->config['minishopCssUrl'] . 'mgr/main.css');
         $this->modx->controller->addJavascript($this->config['minishopJsUrl'] . 'mgr/minishop2.js');
         $this->modx->controller->addJavascript($this->config['minishopJsUrl'] . 'mgr/misc/default.grid.js');
         $this->modx->controller->addJavascript($this->config['minishopJsUrl'] . 'mgr/misc/default.window.js');
@@ -90,9 +81,9 @@ class msDashboard
         $this->modx->controller->addJavascript($this->config['minishopJsUrl'] . 'mgr/misc/ms2.utils.js');
         $this->modx->controller->addJavascript($this->config['minishopJsUrl'] . 'mgr/misc/ms2.combo.js');
 
-        $this->modx->controller->addJavascript($this->config['minishopJsUrl']. 'mgr/orders/orders.form.js');
+        $this->modx->controller->addJavascript($this->config['minishopJsUrl'] . 'mgr/orders/orders.form.js');
         $this->modx->controller->addJavascript($this->config['minishopJsUrl'] . 'mgr/orders/orders.grid.js');
-        $this->modx->controller->addJavascript($this->config['minishopJsUrl']. 'mgr/orders/orders.grid.logs.js');
+        $this->modx->controller->addJavascript($this->config['minishopJsUrl'] . 'mgr/orders/orders.grid.logs.js');
         $this->modx->controller->addJavascript($this->config['minishopJsUrl'] . 'mgr/orders/orders.grid.products.js');
         $this->modx->controller->addJavascript($this->config['minishopJsUrl'] . 'mgr/orders/orders.panel.js');
         $this->modx->controller->addJavascript($this->config['minishopJsUrl'] . 'mgr/orders/orders.js');
@@ -100,6 +91,7 @@ class msDashboard
         $this->modx->controller->addJavascript($this->config['minishopJsUrl'] . 'mgr/orders/orders.window.product.js');
 
         $this->modx->controller->addJavascript(MODX_MANAGER_URL . 'assets/modext/util/datetime.js');
+
 
 
     }
