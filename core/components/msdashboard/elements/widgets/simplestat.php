@@ -5,12 +5,8 @@ require_once MODX_CORE_PATH . 'components/msdashboard/model/msdashboard.class.ph
 class msDashboardSimpleStat extends modDashboardWidgetInterface
 {
     public function render() {
-
         $dashboard = new msDashboard($this->modx);
-
-        // component css/js
         $config['connector_url'] = $dashboard->config['minishopConnectorUrl'];
-
         $minishopConfig = array_merge($dashboard->config, $config);
 
         $this->controller->addHtml('<script type="text/javascript">
@@ -23,7 +19,6 @@ class msDashboardSimpleStat extends modDashboardWidgetInterface
 		        renderTo: "msdashboard-form-simplestat"
 		    });
 		});</script>');
-
 
         return '<div id="msdashboard-form-simplestat"></div>';
     }

@@ -4,12 +4,8 @@ require_once MODX_CORE_PATH . 'components/msdashboard/model/msdashboard.class.ph
 class msDashboardFullOrdersPanel extends modDashboardWidgetInterface
 {
     public function render() {
-
         $dashboard = new msDashboard($this->modx);
-
-        // component css/js
         $config['connector_url'] = $dashboard->config['minishopConnectorUrl'];
-
         $minishopConfig = array_merge($dashboard->config, $config);
 
         $this->controller->addHtml('<script type="text/javascript">
@@ -18,22 +14,15 @@ class msDashboardFullOrdersPanel extends modDashboardWidgetInterface
         	miniShop2.config = ' . json_encode($minishopConfig) . ';
         	msDashboard.config.connector_url = "' . $dashboard->config['connectorUrl'] . '";
 		    MODx.load({
-		        xtype: "minishop2-page-orders",
-                //renderTo: "msdashboard-orders-panel", 
-                /*
-		        items:[
-                    { 
-                        xtype: "minishop2-form-orders"
-                    },{ 
-                        xtype: "minishop2-grid-orders"
-                    }
-		        ] 
-		        */ 
-		    });
+		        xtype: "minishop2-page-orders"
+		    });            
+            setTimeout(function(){
+                if( headTitle = document.getElementById("modx-welcome-header")){ 
+                    headTitle.style.display = "none";
+                }   
+            }, 500);                      
+                     
 		});</script>');
-
-
-        return '<div id="msdashboard-orders-panel"></div>';
     }
 }
 return msDashboardFullOrdersPanel;

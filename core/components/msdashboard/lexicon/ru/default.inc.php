@@ -17,3 +17,4 @@ $_lang['msdashboard_simplestat_desc'] = 'Вывод родной мини ста
 
 
 $_lang['msdashboard_minishop_error'] = 'Компонент miniShop не установлен';
+$_lang['msdashboard_order_widget_error'] = 'Не рекомендуется вызывать виджет с заказами более 1 раза';

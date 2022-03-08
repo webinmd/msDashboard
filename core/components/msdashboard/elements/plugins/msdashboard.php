@@ -2,13 +2,19 @@
 /** @var modX $modx */
 switch ($modx->event->name) {
 
-    case 'OnManagerPageBeforeRender':
+    case 'OnMODXInit':
+        $modx->lexicon->load('msdashboard','minishop2:manager');
+        break;
 
+    case 'OnManagerPageBeforeRender':
 
         if (!$msDashboard = $modx->getService('msdashboard', 'msDashboard', MODX_CORE_PATH . 'components/msdashboard/model/')) {
             return;
         }
 
+        if (!$miniShop2 = $modx->getService('miniShop2')) {
+            return;
+        }
 
         $modx->controller->addCss($msDashboard->config['cssUrl'].'mgr/main.css');
         $modx->controller->addJavascript($msDashboard->config['jsUrl'].'mgr/msdashboard.js');
