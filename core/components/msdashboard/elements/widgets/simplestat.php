@@ -7,6 +7,7 @@ class msDashboardSimpleStat extends modDashboardWidgetInterface
     public function render() {
         $dashboard = new msDashboard($this->modx);
         $config['connector_url'] = $dashboard->config['minishopConnectorUrl'];
+        $config['id'] = "msdashboard-only-stat";
         $minishopConfig = array_merge($dashboard->config, $config);
 
         $this->controller->addHtml('<script type="text/javascript">

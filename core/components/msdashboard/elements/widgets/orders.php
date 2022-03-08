@@ -42,11 +42,12 @@ class msDashboardOrders extends modDashboardWidgetInterface
         }
 
         if($hasOrderWidget) {
-            return $this->modx->lexicon('msdashboard_order_widget_error');
+            //return $this->modx->lexicon('msdashboard_order_widget_error');
         }
 
         $dashboard = new msDashboard($this->modx);
         $config['connector_url'] = $dashboard->config['minishopConnectorUrl'];
+        $config['id'] = "msdashboard-only-orders";
         $minishopConfig = array_merge($dashboard->config, $config);
 
         $this->controller->addHtml('<script type="text/javascript">

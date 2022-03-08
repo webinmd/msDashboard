@@ -14,15 +14,19 @@ class msDashboardFullOrdersPanel extends modDashboardWidgetInterface
         	miniShop2.config = ' . json_encode($minishopConfig) . ';
         	msDashboard.config.connector_url = "' . $dashboard->config['connectorUrl'] . '";
 		    MODx.load({
+		        //xtype: "minishop2-form-orders",
+		        renderTo: "msdashboard-orders-panel",
 		        xtype: "minishop2-page-orders"
 		    });            
             setTimeout(function(){
                 if( headTitle = document.getElementById("modx-welcome-header")){ 
                     headTitle.style.display = "none";
                 }   
-            }, 500);                      
+            }, 500);     
                      
 		});</script>');
+
+        return '<div id="msdashboard-orders-panel"></div>';
     }
 }
 return msDashboardFullOrdersPanel;
