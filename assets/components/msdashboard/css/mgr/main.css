@@ -2,3 +2,82 @@
 #msdashboard-orders-grid .x-toolbar{
     max-width: 100%;
 }
+
+#msdashboard-orders-grid .main-wrapper{
+    padding: 0;
+}
+
+#msdashboard-orders-grid #minishop2-grid-orders .x-panel-tbar-noheader{
+    display: none;
+}
+
+/* statistic
+================================  */
+.msdashboard-simple-stat{
+    display: flex;
+}
+
+.msd-stat-block{
+    background-color: #fff;
+    border-radius: 5px;
+    height: 80px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    font-weight: 300;
+}
+
+.msd-stat-block + .msd-stat-block{
+    margin-left: 15px;
+}
+
+.msd-stat-block-label{
+    color: #9fadbb;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.msd-stat-block-num{
+    font-size: 2em;
+    line-height: 1;
+}
+
+.msd-stat-block-icon{
+    color: #fff;
+    width: 100px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 30px;
+    margin-right: 20px;
+    border-radius: 5px 0 0 5px;
+}
+
+.msd-stat-block-totalorders .msd-stat-block-icon{
+    background-color: #30a5ff;
+}
+
+.msd-stat-block-totalcustomers .msd-stat-block-icon{
+    background-color: #ffb53e;
+}
+
+.msd-stat-block-rev .msd-stat-block-icon{
+    background-color: #1ebfae;
+}
+
+
+/* simple widget
+================================  */
+.msdashboard-simple-widget{
+    background-color: transparent;
+    box-shadow: none;
+}
+.msdashboard-simple-widget > .title{
+    display: none;
+}
+
+.msdashboard-simple-widget .body{
+    padding: 0;
+}

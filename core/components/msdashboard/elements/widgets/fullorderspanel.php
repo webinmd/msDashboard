@@ -6,6 +6,7 @@ class msDashboardFullOrdersPanel extends modDashboardWidgetInterface
     public function render() {
         $dashboard = new msDashboard($this->modx);
         $config['connector_url'] = $dashboard->config['minishopConnectorUrl'];
+        $config['id'] = "msdashboard-panel-orders";
         $minishopConfig = array_merge($dashboard->config, $config);
 
         $this->controller->addHtml('<script type="text/javascript">
@@ -14,8 +15,6 @@ class msDashboardFullOrdersPanel extends modDashboardWidgetInterface
         	miniShop2.config = ' . json_encode($minishopConfig) . ';
         	msDashboard.config.connector_url = "' . $dashboard->config['connectorUrl'] . '";
 		    MODx.load({
-		        //xtype: "minishop2-form-orders",
-		        renderTo: "msdashboard-orders-panel",
 		        xtype: "minishop2-page-orders"
 		    });            
             setTimeout(function(){
@@ -25,8 +24,6 @@ class msDashboardFullOrdersPanel extends modDashboardWidgetInterface
             }, 500);     
                      
 		});</script>');
-
-        return '<div id="msdashboard-orders-panel"></div>';
     }
 }
 return msDashboardFullOrdersPanel;

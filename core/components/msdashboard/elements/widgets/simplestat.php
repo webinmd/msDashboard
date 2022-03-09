@@ -6,22 +6,44 @@ class msDashboardSimpleStat extends modDashboardWidgetInterface
 {
     public function render() {
         $dashboard = new msDashboard($this->modx);
-        $config['connector_url'] = $dashboard->config['minishopConnectorUrl'];
-        $config['id'] = "msdashboard-only-stat";
-        $minishopConfig = array_merge($dashboard->config, $config);
+        $stat = $dashboard->getSimpleStat();
+
+        $html = '<div class="msdashboard-simple-stat" id="msdashboard-simple-stat">
+                    <div class="msd-stat-block msd-stat-block-totalorders">
+                        <div class="msd-stat-block-icon"><i class="icon icon-shopping-cart"></i></div>
+                        <div class="msd-stat-block-data">
+                            <div class="msd-stat-block-label">'.$this->modx->lexicon("msdashboard_simplestat_totalorders").'</div>
+                            <div class="msd-stat-block-num">'.$stat["total_orders"].'</div>
+                        </div>
+                    </div>
+                    <div class="msd-stat-block msd-stat-block-totalcustomers">
+                        <div class="msd-stat-block-icon"><i class="icon icon-users"></i></div>
+                        <div class="msd-stat-block-data">
+                            <div class="msd-stat-block-label">'.$this->modx->lexicon("msdashboard_simplestat_totalcustomers").'</div>
+                            <div class="msd-stat-block-num">'.$stat["total_customers"].'</div>
+                        </div>
+                    </div>
+                    <div class="msd-stat-block msd-stat-block-rev">
+                        <div class="msd-stat-block-icon"><i class="icon icon-bar-chart"></i></div>
+                        <div class="msd-stat-block-data">
+                            <div class="msd-stat-block-label">'.$this->modx->lexicon("msdashboard_simplestat_rev").'</div>
+                            <div class="msd-stat-block-num">'.$stat["rev"].'</div>
+                        </div>
+                    </div>
+
+                </div>';
 
         $this->controller->addHtml('<script type="text/javascript">
         Ext.onReady(function() {
-        	msDashboard.config = ' . json_encode($dashboard->config) . ';
-        	miniShop2.config = ' . json_encode($minishopConfig) . ';
-        	msDashboard.config.connector_url = "' . $dashboard->config['connectorUrl'] . '";
-		    MODx.load({ 
-		        xtype: "minishop2-form-orders", 
-		        renderTo: "msdashboard-form-simplestat"
-		    });
-		});</script>');
+            setTimeout(function(){
+                if( dashboardStat = document.getElementById("msdashboard-simple-stat")){ 
+                    dashboardStat.closest(".dashboard-block").classList.add("msdashboard-simple-widget");
+                }   
+            }, 300);     
+        });</script>');
 
-        return '<div id="msdashboard-form-simplestat"></div>';
+        return $html;
+
     }
 }
 return msDashboardSimpleStat;

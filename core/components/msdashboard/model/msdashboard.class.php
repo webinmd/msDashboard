@@ -65,4 +65,18 @@ class msDashboard
 
     }
 
+
+
+
+    public function getSimpleStat() {
+
+        $statistic = [
+            'total_orders' => 0,
+            'total_customers' => 0,
+            'rev' => 0
+        ];
+
+        return $statistic;
+    }
+
 }

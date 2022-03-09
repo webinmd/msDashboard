@@ -6,14 +6,18 @@ $_lang['msdashboard_menu_desc'] = 'Пример расширения для ра
 $_lang['msdashboard_intro_msg'] = 'Вы можете выделять сразу несколько предметов при помощи Shift или Ctrl.';
 
 
-$_lang['msDashboardFullOrdersPanel'] = 'Заказы с фильтром';
-$_lang['msdashboard_fullpanelorders_desc'] = 'Вывод miniShop панели с заказами';
+$_lang['msDashboardFullOrdersPanel'] = 'Панель заказов';
+$_lang['msdashboard_fullpanelorders_desc'] = 'Вывод полной панели с заказами. Всегда выводится сверху';
 
 $_lang['msDashboardOrders'] = 'Заказы';
 $_lang['msdashboard_orders_desc'] = 'Вывод последних заказов';
 
 $_lang['msDashboardSimpleStat'] = 'Статистика';
 $_lang['msdashboard_simplestat_desc'] = 'Вывод родной мини статистики miniShop';
+
+$_lang['msdashboard_simplestat_totalorders'] = 'Всего заказов';
+$_lang['msdashboard_simplestat_totalcustomers'] = 'Всего покупателей';
+$_lang['msdashboard_simplestat_rev'] = 'Оборот';
 
 
 $_lang['msdashboard_minishop_error'] = 'Компонент miniShop не установлен';
