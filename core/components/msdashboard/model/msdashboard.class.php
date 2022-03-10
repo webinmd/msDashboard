@@ -67,12 +67,18 @@ class msDashboard
 
 
 
-
     public function getSimpleStat() {
 
+        $order_status = $this->modx->getOption('msdashboard_order_status', null, 1);
+        if($order_status == 0) {
+            $where_orders = [];
+        } else {
+            $where_orders = ['status' => $order_status];
+        }
+
         $statistic = [
-            'total_orders' => 0,
-            'total_customers' => 0,
+            'total_orders' => $this->modx->getCount('msOrder',$where_orders),
+            'total_customers' => $this->modx->getCount('modUser',array('active' => 1, 'primary_group' => 0)),
             'rev' => 0
         ];
 

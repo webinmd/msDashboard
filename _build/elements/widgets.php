@@ -7,7 +7,7 @@ return [
         'content' => '[[++core_path]]components/msdashboard/elements/widgets/fullorderspanel.php',
         'namespace' => 'msdashboard',
         'lexicon' => 'msdashboard:default',
-        'size' => 'full',
+        'size' => 'double',
     ],
     'msDashboardOrders' => [
         'description' => 'msdashboard_orders_desc',
@@ -15,7 +15,7 @@ return [
         'content' => '[[++core_path]]components/msdashboard/elements/widgets/orders.php',
         'namespace' => 'msdashboard',
         'lexicon' => 'msdashboard:default',
-        'size' => 'full',
+        'size' => 'double',
     ],
     'msDashboardSimpleStat' => [
         'description' => 'msdashboard_simplestat_desc',
