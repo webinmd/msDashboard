@@ -11,6 +11,18 @@
     display: none;
 }
 
+.dashboard-block-third {
+    width: 33%;
+}
+
+.dashboard-block-two-thirds {
+    width: 66%;
+}
+
+.dashboard-block-third + .dashboard-block-two-thirds{
+    margin-left: 1%;
+}
+
 /* statistic
 ================================  */
 .msdashboard-simple-stat{

@@ -27,5 +27,8 @@ $_lang['msdashboard_order_widget_error'] = 'Не рекомендуется вы
 $_lang['msDashboardOrdersPieChartsByStatus'] = 'Заказы по статусам';
 $_lang['msdashboard_piecharts_bystatus_desc'] = 'Вывод круговой диаграммы заказов с разделением по статусам';
 
+$_lang['msDashboardOrdersTimeChartsByStatus'] = 'Заказы по статусам по времени';
+$_lang['msdashboard_timecharts_bystatus_desc'] = 'Вывод линейного граффика заказов с разделением по статусам';
+
 
 
