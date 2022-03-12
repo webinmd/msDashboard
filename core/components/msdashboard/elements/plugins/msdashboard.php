@@ -39,6 +39,12 @@ switch ($modx->event->name) {
 
         $modx->controller->addJavascript(MODX_MANAGER_URL . 'assets/modext/util/datetime.js');
 
+        // checking for enable charts
+        if( $modx->getOption('msdashboard_enable_charts', null, true)) {
+            $modx->controller->addCss($msDashboard->config['assetsUrl'].'libs/apexcharts/apexcharts.css');
+            $modx->controller->addJavascript($msDashboard->config['assetsUrl'].'libs/apexcharts/apexcharts.min.js');
+        }
+
         break;
 
 }

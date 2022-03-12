@@ -27,7 +27,7 @@ class msDashboardSimpleStat extends modDashboardWidgetInterface
                         <div class="msd-stat-block-icon"><i class="icon icon-bar-chart"></i></div>
                         <div class="msd-stat-block-data">
                             <div class="msd-stat-block-label">'.$this->modx->lexicon("msdashboard_simplestat_rev").'</div>
-                            <div class="msd-stat-block-num">'.$stat["rev"].'</div>
+                            <div class="msd-stat-block-num">'.$stat["rev"].' '.$this->modx->lexicon("ms2_frontend_currency").'</div>
                         </div>
                     </div>
 

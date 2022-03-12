@@ -69,17 +69,34 @@ class msDashboard
 
     public function getSimpleStat() {
 
-        $order_status = $this->modx->getOption('msdashboard_order_status', null, 1);
+        // sum
+        $order_status = $this->modx->getOption('msdashboard_order_status', null, 0);
+
         if($order_status == 0) {
             $where_orders = [];
         } else {
             $where_orders = ['status' => $order_status];
         }
 
+        // sum for rev
+        $order_status_rev = $this->modx->getOption('msdashboard_order_status_rev', null, 0);
+        $c = $this->modx->newQuery('msOrder');
+        $c->select('SUM(cost) as cost'); //amount is my column in the db with the amounts i want to SUM up
+
+        if($order_status_rev > 0) {
+            $c->where(array(
+                'status' => $order_status_rev
+            ));
+        }
+
+        $c->prepare();
+        $c->stmt->execute();
+        $rev_sum = $c->stmt->fetchColumn();
+
         $statistic = [
             'total_orders' => $this->modx->getCount('msOrder',$where_orders),
             'total_customers' => $this->modx->getCount('modUser',array('active' => 1, 'primary_group' => 0)),
-            'rev' => 0
+            'rev' => $rev_sum
         ];
 
         return $statistic;

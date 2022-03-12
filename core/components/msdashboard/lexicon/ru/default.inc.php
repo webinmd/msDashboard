@@ -22,3 +22,10 @@ $_lang['msdashboard_simplestat_rev'] = 'Оборот';
 
 $_lang['msdashboard_minishop_error'] = 'Компонент miniShop не установлен';
 $_lang['msdashboard_order_widget_error'] = 'Не рекомендуется вызывать виджет с заказами более 1 раза';
+
+
+$_lang['msDashboardOrdersPieChartsByStatus'] = 'Заказы по статусам';
+$_lang['msdashboard_piecharts_bystatus_desc'] = 'Вывод круговой диаграммы заказов с разделением по статусам';
+
+
+
