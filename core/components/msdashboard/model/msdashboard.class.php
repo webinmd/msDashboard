@@ -88,9 +88,12 @@ class msDashboard
         $c->select('SUM(cost) as cost');
 
         if($order_status_rev > 0) {
-            $c->where(array(
-                'status' => $order_status_rev
-            ));
+            $c->where([
+                'status' => $order_status_rev,
+                'Status.active' => 1
+            ]);
+        } else {
+            $c->where([ 'Status.active' => 1 ]);
         }
 
         $c->prepare();
@@ -122,7 +125,9 @@ class msDashboard
 
         if($statusList != 0) {
             $statusArr = explode(',', $statusList);
-            $c->where([ 'Status.id:IN' => $statusArr ]);
+            $c->where([ 'Status.id:IN' => $statusArr, 'Status.active' => 1 ]);
+        } else {
+            $c->where([ 'Status.active' => 1 ]);
         }
 
         $c->select('Status.name, COUNT(*) as count');
@@ -140,4 +145,37 @@ class msDashboard
 
         return $output;
     }
+
+
+    /*
+     *
+     *
+     *
+     */
+    public function getOrdersByStatusOnTime() {
+
+        $output = [];
+
+        $q_stats_month = $this->modx->newQuery('msOrder');
+        $q_stats_month->select('status,`createdon`, month(`createdon`) AS `order_month`, count(*) AS `order_count`, SUM(cart_cost) AS order_cost');
+        $q_stats_month->groupby('year(`createdon`), month(`createdon`), status');
+        $q_stats_month->sortby('createdon','ASC');
+
+        if ($q_stats_month->prepare() && $q_stats_month->stmt->execute()) {
+            while ($row = $q_stats_month->stmt->fetch(PDO::FETCH_ASSOC)){
+                $date = date_parse($row['createdon']);
+                $output[$date['year'].'-'.$date['month']][$row['status']] = [
+                    'total_cost'    => $row['order_cost'],
+                    'count_orders'  => $row['order_count'],
+                    'status'        => $row['status']
+                ];
+            }
+        }
+
+        return $output;
+    }
+
+
+
+
 }

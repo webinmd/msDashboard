@@ -10,6 +10,19 @@ class msDashboardOrdersTimeChartsByStatus extends modDashboardWidgetInterface
         $config['id'] = "msdashboard-only-orders";
         $minishopConfig = array_merge($dashboard->config, $config);
 
+
+        $data = $dashboard->getOrdersByStatusOnTime();
+        $categories = [];
+        $series = [];
+
+        foreach($data as $key => $value) {
+            $categories[] = $key;
+            $series[] = $value['status'];
+        }
+
+        $cats = implode(',', $categories);
+
+
         $this->controller->addHtml('<script type="text/javascript">
         Ext.onReady(function() {
         	msDashboard.config = ' . json_encode($dashboard->config) . ';
@@ -64,7 +77,7 @@ class msDashboardOrdersTimeChartsByStatus extends modDashboardWidgetInterface
                 size: 1
               },
               xaxis: {
-                categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+                categories: ['.$cats.'],
                 title: {
                   text: "Month"
                 }

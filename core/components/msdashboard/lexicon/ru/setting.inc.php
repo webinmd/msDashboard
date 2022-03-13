@@ -15,9 +15,7 @@ $_lang['setting_msdashboard_order_status_desc'] = 'Укажите статус �
 $_lang['setting_msdashboard_order_status_rev'] = 'Статус заказов для подсчета оборота';
 $_lang['setting_msdashboard_order_status_rev_desc'] = '0 - все заказы';
 
-
 $_lang['setting_msdashboard_status_list_forpie'] = 'Статусы для круговой диаграммы';
 $_lang['setting_msdashboard_status_list_forpie_desc'] = '0 - все статусы';
-
 
 $_lang['area_msdashboard_simplestat'] = 'Простая статистика';
