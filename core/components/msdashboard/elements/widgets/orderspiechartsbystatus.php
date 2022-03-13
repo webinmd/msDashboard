@@ -10,35 +10,28 @@ class msDashboardOrdersPieChartsByStatus extends modDashboardWidgetInterface
         $config['id'] = "msdashboard-only-orders";
         $minishopConfig = array_merge($dashboard->config, $config);
 
+        $data = $dashboard->getOrdersByStatus();
+
+        $series = implode(',', $data["series"]);
+        $labels = '"'.implode('","', $data["labels"]).'"';
+
         $this->controller->addHtml('<script type="text/javascript">
         Ext.onReady(function() {
         	msDashboard.config = ' . json_encode($dashboard->config) . ';
         	miniShop2.config = ' . json_encode($minishopConfig) . ';
-        	msDashboard.config.connector_url = "' . $dashboard->config['connectorUrl'] . '";
-            
+        	msDashboard.config.connector_url = "' . $dashboard->config['connectorUrl'] . '";        	
             
             var options = {
                 chart: {
-                    width: 480,
+                    width: 450,
                     type: "pie",
-                },
-                series: [44, 55, 13, 43, 22],
-                labels: ["Новый", "Оплачен", "Отправлен", "Отменен", "Оформляется"],
-                responsive: [{
-                    breakpoint: 480,
-                    options: {
-                        chart: {
-                            width: 400
-                        },
-                        legend: {
-                            position: "bottom"
-                        }
-                    }
-                }]
+                }, 
+                series: ['.$series.'],
+                labels: ['.$labels.']
             };
 
             var chart = new ApexCharts(document.querySelector("#msdashboard-orders-picharts_bystatus"), options);
-            chart.render();
+            chart.render();            
             
 		});</script>');
 

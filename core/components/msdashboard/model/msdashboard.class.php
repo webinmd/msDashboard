@@ -66,7 +66,11 @@ class msDashboard
     }
 
 
-
+    /*
+     *
+     *
+     *
+     */
     public function getSimpleStat() {
 
         // sum
@@ -81,7 +85,7 @@ class msDashboard
         // sum for rev
         $order_status_rev = $this->modx->getOption('msdashboard_order_status_rev', null, 0);
         $c = $this->modx->newQuery('msOrder');
-        $c->select('SUM(cost) as cost'); //amount is my column in the db with the amounts i want to SUM up
+        $c->select('SUM(cost) as cost');
 
         if($order_status_rev > 0) {
             $c->where(array(
@@ -102,4 +106,38 @@ class msDashboard
         return $statistic;
     }
 
+
+    /*
+     *
+     *
+     *
+     */
+    public function getOrdersByStatus() {
+        //
+        $statusList = $this->modx->getOption('msdashboard_status_list_forpie', null, 0);
+        $output = [];
+
+        $c = $this->modx->newQuery('msOrder');
+        $c->leftJoin('msOrderStatus','Status');
+
+        if($statusList != 0) {
+            $statusArr = explode(',', $statusList);
+            $c->where([ 'Status.id:IN' => $statusArr ]);
+        }
+
+        $c->select('Status.name, COUNT(*) as count');
+        $c->groupby('msOrder.status');
+        $c->prepare();
+
+        $c->stmt->execute();
+
+        if($result = $c->stmt->fetchAll(PDO::FETCH_ASSOC)) {
+            foreach ($result as $res) {
+                $output['series'][] = $res['count'];
+                $output['labels'][] = $res['name'];
+            }
+        }
+
+        return $output;
+    }
 }

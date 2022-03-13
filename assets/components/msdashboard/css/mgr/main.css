@@ -23,6 +23,10 @@
     margin-left: 1%;
 }
 
+.dashboard-block-two-thirds + .dashboard-block-third {
+    margin-left: 1%;
+}
+
 /* statistic
 ================================  */
 .msdashboard-simple-stat{
@@ -79,7 +83,6 @@
     background-color: #1ebfae;
 }
 
-
 /* simple widget
 ================================  */
 .msdashboard-simple-widget{
@@ -92,4 +95,11 @@
 
 .msdashboard-simple-widget .body{
     padding: 0;
+}
+
+/*
+================================= */
+#msdashboard-orders-picharts_bystatus{
+    background-color: #fff;
+    border-radius: 5px;
 }

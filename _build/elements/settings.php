@@ -21,4 +21,10 @@ return [
         'value' => 0,
         'area' => 'msdashboard_stat',
     ],
+    'status_list_forpie' => [
+        'xtype' => 'textarea',
+        'value' => '1,2,3,4',
+        'area' => 'msdashboard_stat',
+    ],
 ];
+
