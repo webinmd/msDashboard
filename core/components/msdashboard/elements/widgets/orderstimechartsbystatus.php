@@ -10,17 +10,44 @@ class msDashboardOrdersTimeChartsByStatus extends modDashboardWidgetInterface
         $config['id'] = "msdashboard-only-orders";
         $minishopConfig = array_merge($dashboard->config, $config);
 
-
-        $data = $dashboard->getOrdersByStatusOnTime();
+        $dataStat = $dashboard->getOrdersByStatusOnTime();
         $categories = [];
         $series = [];
 
-        foreach($data as $key => $value) {
+        foreach($dataStat as $key => $value) {
+
             $categories[] = $key;
-            $series[] = $value['status'];
+
+            foreach($value as $in_val) {
+
+                if( isset($series[$in_val['status_title']]) && $series[$in_val['status_title']]['name'] == $in_val['status_title'] ) {
+                    $data = $series[$in_val['status_title']]['data'];
+                    array_push($data, $in_val['count_orders']);
+                } else {
+                    $data[] = $in_val['count_orders'];
+                }
+
+                $series[$in_val['status_title']] = [
+                    'name' => $in_val['status_title'],
+                    'data' => $data
+                ];
+
+                unset($data);
+            }
         }
 
-        $cats = implode(',', $categories);
+
+        $statuses = [];
+
+        foreach($series as $k=>$v) {
+            $statuses[] = $v;
+        }
+
+
+
+        $this->modx->log(1,'Line  --- '.json_encode($statuses, JSON_UNESCAPED_UNICODE));
+
+        $cats = '"'.implode('","', $categories).'"';
 
 
         $this->controller->addHtml('<script type="text/javascript">
@@ -30,16 +57,7 @@ class msDashboardOrdersTimeChartsByStatus extends modDashboardWidgetInterface
         	msDashboard.config.connector_url = "' . $dashboard->config['connectorUrl'] . '";
             
             var options = {
-                series: [
-                {
-                  name: "High - 2013",
-                  data: [28, 29, 33, 36, 32, 32, 33]
-                },
-                {
-                  name: "Low - 2013",
-                  data: [12, 11, 14, 18, 17, 13, 13]
-                }
-              ],
+                series: '.json_encode($statuses, JSON_UNESCAPED_UNICODE).',
                 chart: {
                 height: 280,
                 type: "line",
@@ -77,17 +95,14 @@ class msDashboardOrdersTimeChartsByStatus extends modDashboardWidgetInterface
                 size: 1
               },
               xaxis: {
-                categories: ['.$cats.'],
-                title: {
-                  text: "Month"
-                }
+                categories: ['.$cats.']
               },
               yaxis: {
                 title: {
                   text: "'.$this->modx->lexicon("msdashboard_label_orders").'"
                 },
-                min: 5,
-                max: 40
+                min: 0,
+                max: 10
               },
               legend: {
                 position: "top",
@@ -100,6 +115,8 @@ class msDashboardOrdersTimeChartsByStatus extends modDashboardWidgetInterface
             
               var chart = new ApexCharts(document.querySelector("#msdashboard-orders-timeharts_bystatus"), options);
               chart.render();
+              
+              console.log(options);
            
             
 		});</script>');
