@@ -12,19 +12,42 @@
 }
 
 .dashboard-block-third {
-    width: 33%;
+    width: 100%;
 }
 
 .dashboard-block-two-thirds {
-    width: 66%;
+    width: 100%;
 }
 
-.dashboard-block-third + .dashboard-block-two-thirds{
+@media(min-width: 992px){
+    .dashboard-block-third {
+        width: 45%;
+    }
+
+    .dashboard-block-two-thirds {
+        width: 55%;
+    }
+}
+
+@media(min-width: 1440px){
+    .dashboard-block-third {
+        width: 33%;
+    }
+
+    .dashboard-block-two-thirds {
+        width: 66%;
+    }
+}
+
+.dashboard-block-third + .dashboard-block-two-thirds,
+.dashboard-block-two-thirds + .dashboard-block-third,
+.dashboard-block-third + .dashboard-block-third,
+.dashboard-block-half + .dashboard-block-third{
     margin-left: 1%;
 }
 
-.dashboard-block-two-thirds + .dashboard-block-third {
-    margin-left: 1%;
+.msdashboard-pie-chart{
+    height: 300px;
 }
 
 /* statistic
@@ -102,4 +125,8 @@
 #msdashboard-orders-picharts_bystatus{
     background-color: #fff;
     border-radius: 5px;
+}
+
+.apexcharts-canvas {
+    max-width: 100%;
 }

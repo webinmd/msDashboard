@@ -13,12 +13,20 @@ class msDashboardOrdersTimeChartsByStatus extends modDashboardWidgetInterface
         $dataStat = $dashboard->getOrdersByStatusOnTime();
         $categories = [];
         $series = [];
+        $colors = [];
+        $min = 0;
+        $max = 10;
 
         foreach($dataStat as $key => $value) {
 
             $categories[] = $key;
 
             foreach($value as $in_val) {
+                $colors[] = $in_val['color'];
+
+                if($max < $in_val['count_orders']) {
+                    $max = $in_val['count_orders'];
+                }
 
                 if( isset($series[$in_val['status_title']]) && $series[$in_val['status_title']]['name'] == $in_val['status_title'] ) {
                     $data = $series[$in_val['status_title']]['data'];
@@ -44,10 +52,8 @@ class msDashboardOrdersTimeChartsByStatus extends modDashboardWidgetInterface
         }
 
 
-
-        $this->modx->log(1,'Line  --- '.json_encode($statuses, JSON_UNESCAPED_UNICODE));
-
         $cats = '"'.implode('","', $categories).'"';
+        $colorsList = '"#'.implode('","#', array_unique($colors)).'"';
 
 
         $this->controller->addHtml('<script type="text/javascript">
@@ -59,21 +65,22 @@ class msDashboardOrdersTimeChartsByStatus extends modDashboardWidgetInterface
             var options = {
                 series: '.json_encode($statuses, JSON_UNESCAPED_UNICODE).',
                 chart: {
-                height: 280,
-                type: "line",
-                dropShadow: {
-                  enabled: true,
-                  color: "#000",
-                  top: 18,
-                  left: 7,
-                  blur: 10,
-                  opacity: 0.2
-                },
-                toolbar: {
-                  show: false
-                }
+                    height: 284,
+                    width: "97%",
+                    type: "line",
+                    dropShadow: {
+                        enabled: true,
+                        color: "#000",
+                        top: 18,
+                        left: 7,
+                        blur: 10,
+                        opacity: 0.2
+                    },
+                    toolbar: {
+                      show: false
+                    }
               },
-              colors: ["#77B6EA", "#545454"],
+              colors: ['.$colorsList.'],
               dataLabels: {
                 enabled: true,
               },
@@ -81,11 +88,12 @@ class msDashboardOrdersTimeChartsByStatus extends modDashboardWidgetInterface
                 curve: "smooth"
               },
               title: {
-                text: "Average High & Low Temperature",
+                text: "'.$this->modx->lexicon("msdashboard_timecharts_label_statuses").'",
                 align: "left"
               },
               grid: {
                 borderColor: "#e7e7e7",
+                position: "back",
                 row: {
                   colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
                   opacity: 0.5
@@ -101,23 +109,18 @@ class msDashboardOrdersTimeChartsByStatus extends modDashboardWidgetInterface
                 title: {
                   text: "'.$this->modx->lexicon("msdashboard_label_orders").'"
                 },
-                min: 0,
-                max: 10
+                min: '.$min.',
+                max: '.$max.'
               },
               legend: {
-                position: "top",
-                horizontalAlign: "right",
-                floating: true,
-                offsetY: -25,
-                offsetX: -5
-              }
+                    position: "top",
+                    horizontalAlign: "right",
+                    offsetY: -25
+                  }
               };
             
               var chart = new ApexCharts(document.querySelector("#msdashboard-orders-timeharts_bystatus"), options);
               chart.render();
-              
-              console.log(options);
-           
             
 		});</script>');
 

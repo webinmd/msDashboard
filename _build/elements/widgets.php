@@ -41,4 +41,20 @@ return [
         'lexicon' => 'msdashboard:default',
         'size' => 'two-thirds',
     ],
+    'msDashboardOrdersPieChartsByDeliveries' => [
+        'description' => 'msdashboard_piecharts_bydeliveries_desc',
+        'type' => 'file',
+        'content' => '[[++core_path]]components/msdashboard/elements/widgets/orderspiechartsbydeliveries.php',
+        'namespace' => 'msdashboard',
+        'lexicon' => 'msdashboard:default',
+        'size' => 'half',
+    ],
+    'msDashboardOrdersPieChartsByPayments' => [
+        'description' => 'msdashboard_piecharts_bypayments_desc',
+        'type' => 'file',
+        'content' => '[[++core_path]]components/msdashboard/elements/widgets/orderspiechartsbypayments.php',
+        'namespace' => 'msdashboard',
+        'lexicon' => 'msdashboard:default',
+        'size' => 'half',
+    ],
 ];

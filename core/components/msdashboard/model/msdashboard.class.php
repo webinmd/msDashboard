@@ -69,7 +69,6 @@ class msDashboard
     /*
      *
      *
-     *
      */
     public function getSimpleStat() {
 
@@ -89,11 +88,8 @@ class msDashboard
 
         if($order_status_rev > 0) {
             $c->where([
-                'status' => $order_status_rev,
-                'Status.active' => 1
+                'status' => $order_status_rev
             ]);
-        } else {
-            $c->where([ 'Status.active' => 1 ]);
         }
 
         $c->prepare();
@@ -111,7 +107,6 @@ class msDashboard
 
 
     /*
-     *
      *
      *
      */
@@ -150,6 +145,61 @@ class msDashboard
     /*
      *
      *
+     */
+    public function getOrdersByDeliveries() {
+
+        $output = [];
+
+        $c = $this->modx->newQuery('msOrder');
+        $c->leftJoin('msDelivery','Delivery');
+
+        $c->select('Delivery.name, COUNT(*) as count');
+        $c->groupby('msOrder.delivery');
+        $c->prepare();
+
+        $c->stmt->execute();
+
+        if($result = $c->stmt->fetchAll(PDO::FETCH_ASSOC)) {
+            foreach ($result as $res) {
+                $output['series'][] = $res['count'];
+                $output['labels'][] = $res['name'];
+            }
+        }
+
+        return $output;
+    }
+
+
+    /*
+     *
+     *
+     */
+    public function getOrdersByPayments() {
+
+        $output = [];
+
+        $c = $this->modx->newQuery('msOrder');
+        $c->leftJoin('msPayment','Payment');
+
+        $c->select('Payment.name, COUNT(*) as count');
+        $c->groupby('msOrder.payment');
+        $c->prepare();
+
+        $c->stmt->execute();
+
+        if($result = $c->stmt->fetchAll(PDO::FETCH_ASSOC)) {
+            foreach ($result as $res) {
+                $output['series'][] = $res['count'];
+                $output['labels'][] = $res['name'];
+            }
+        }
+
+        return $output;
+    }
+
+
+    /*
+     *
      *
      */
     public function getOrdersByStatusOnTime() {
@@ -158,7 +208,7 @@ class msDashboard
 
         $q_stats_month = $this->modx->newQuery('msOrder');
         $q_stats_month->leftJoin('msOrderStatus','Status');
-        $q_stats_month->select('Status.name as status_title, status,`createdon`, month(`createdon`) AS `order_month`, count(*) AS `order_count`, SUM(cart_cost) AS order_cost');
+        $q_stats_month->select('Status.name as status_title, Status.color as color, status,`createdon`, month(`createdon`) AS `order_month`, count(*) AS `order_count`, SUM(cart_cost) AS order_cost');
         $q_stats_month->groupby('year(`createdon`), month(`createdon`), status');
         $q_stats_month->sortby('createdon','ASC');
 
@@ -169,7 +219,8 @@ class msDashboard
                     'total_cost'    => $row['order_cost'],
                     'count_orders'  => $row['order_count'],
                     'status'        => $row['status'],
-                    'status_title'  => $row['status_title']
+                    'status_title'  => $row['status_title'],
+                    'color'         => $row['color']
                 ];
             }
         }
