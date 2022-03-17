@@ -5,7 +5,6 @@ $_lang['msdashboard'] = 'msDashboard';
 $_lang['msdashboard_menu_desc'] = 'Пример расширения для разработки.';
 $_lang['msdashboard_intro_msg'] = 'Вы можете выделять сразу несколько предметов при помощи Shift или Ctrl.';
 
-
 $_lang['msDashboardFullOrdersPanel'] = 'Панель заказов';
 $_lang['msdashboard_fullpanelorders_desc'] = 'Вывод полной панели с заказами. Всегда выводится сверху';
 

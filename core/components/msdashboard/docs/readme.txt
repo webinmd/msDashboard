@@ -1,7 +1,7 @@
 --------------------
 msDashboard
 --------------------
-Author: E. webinmd <info@webinmd.com>
+Author: E. Webinmd <info@webinmd.com>
 --------------------
 
 Extra for MODx Revolution.

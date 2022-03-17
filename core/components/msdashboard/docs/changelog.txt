@@ -1,6 +1,5 @@
 Changelog for msDashboard.
 
-
 1.0.0
 ==============
-- Start
+- First release
