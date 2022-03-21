@@ -130,3 +130,14 @@
 .apexcharts-canvas {
     max-width: 100%;
 }
+
+.dashboard-block .title{
+    position: relative;
+}
+
+.dashboard-block .title .msdashboard-all-orders{
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}

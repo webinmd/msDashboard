@@ -60,7 +60,6 @@ class msDashboardOrdersTimeChartsByStatus extends modDashboardWidgetInterface
         Ext.onReady(function() {
         	msDashboard.config = ' . json_encode($dashboard->config) . ';
         	miniShop2.config = ' . json_encode($minishopConfig) . ';
-        	msDashboard.config.connector_url = "' . $dashboard->config['connectorUrl'] . '";
             
             var options = {
                 series: '.json_encode($statuses, JSON_UNESCAPED_UNICODE).',

@@ -24,7 +24,7 @@ return [
         'policies' => true,
         'policy_templates' => true,
         'resources' => false,
-        'settings' => true,
+        'settings' => false,
         'snippets' => true,
         'templates' => false,
         'widgets' => true,

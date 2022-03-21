@@ -43,8 +43,6 @@ class msDashboard
         $this->config = array_merge([
             'corePath'              => $corePath,
             'modelPath'             => $corePath . 'model/',
-            'processorsPath'        => $corePath . 'processors/',
-            'connectorUrl'          => $assetsUrl . 'connector.php',
             'assetsUrl'             => $assetsUrl,
             'cssUrl'                => $assetsUrl . 'css/',
             'jsUrl'                 => $assetsUrl . 'js/',
@@ -94,7 +92,9 @@ class msDashboard
 
         $c->prepare();
         $c->stmt->execute();
-        $rev_sum = $c->stmt->fetchColumn();
+        if(!$rev_sum = $c->stmt->fetchColumn()) {
+            $rev_sum = 0;
+        }
 
         $statistic = [
             'total_orders' => $this->modx->getCount('msOrder',$where_orders),
@@ -227,8 +227,5 @@ class msDashboard
 
         return $output;
     }
-
-
-
 
 }

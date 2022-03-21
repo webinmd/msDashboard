@@ -14,11 +14,20 @@ class msDashboardOrders extends modDashboardWidgetInterface
         Ext.onReady(function() {
         	msDashboard.config = ' . json_encode($dashboard->config) . ';
         	miniShop2.config = ' . json_encode($minishopConfig) . ';
-        	msDashboard.config.connector_url = "' . $dashboard->config['connectorUrl'] . '";
 		    MODx.load({
 		        xtype: "minishop2-grid-orders", 
 		        renderTo: "msdashboard-orders-grid"
 		    });
+            
+             setTimeout(function(){
+                let dash = document.getElementById("msdashboard-orders-grid").closest(".dashboard-block");
+                let title = dash.querySelector("h3.title"); 
+                let btn = "<a href=\'?a=mgr/orders&namespace=minishop2\' class=\'msdashboard-all-orders x-btn x-btn-small primary-button\'>' . $this->modx->lexicon("msdashboard_allorders") . '</a>";
+                
+                title.insertAdjacentHTML("beforeend",btn); 
+
+            }, 500);   
+             
 		});</script>');
 
         return '<div id="msdashboard-orders-grid"></div>';

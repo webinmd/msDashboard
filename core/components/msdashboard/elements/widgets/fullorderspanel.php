@@ -13,7 +13,6 @@ class msDashboardFullOrdersPanel extends modDashboardWidgetInterface
         Ext.onReady(function() {
         	msDashboard.config = ' . json_encode($dashboard->config) . ';
         	miniShop2.config = ' . json_encode($minishopConfig) . ';
-        	msDashboard.config.connector_url = "' . $dashboard->config['connectorUrl'] . '";
 		    MODx.load({
 		        xtype: "minishop2-page-orders"
 		    });            

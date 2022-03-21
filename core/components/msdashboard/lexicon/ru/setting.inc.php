@@ -1,7 +1,7 @@
 <?php
 
 $_lang['area_msdashboard_main'] = 'Основные';
-$_lang['setting_msdashboard_enable_charts'] = 'Включить графики';
+$_lang['setting_msdashboard_enable_charts'] = 'Подключить js графики';
 $_lang['setting_msdashboard_enable_charts_desc'] = 'Включить/Выключить подключение скриптов для построения графиков';
 
 $_lang['area_msdashboard_orders'] = 'Заказы';

@@ -5,4 +5,3 @@
  * @package msDashboard
  * @subpackage lexicon
  */
-$_lang['msdashboard_save'] = 'Разрешает создание/изменение данных.';

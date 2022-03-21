@@ -18,8 +18,7 @@ class msDashboardOrdersPieChartsByStatus extends modDashboardWidgetInterface
         $this->controller->addHtml('<script type="text/javascript">
         Ext.onReady(function() {
         	msDashboard.config = ' . json_encode($dashboard->config) . ';
-        	miniShop2.config = ' . json_encode($minishopConfig) . ';
-        	msDashboard.config.connector_url = "' . $dashboard->config['connectorUrl'] . '";        	
+        	miniShop2.config = ' . json_encode($minishopConfig) . ';	
             
             var options = {
                 chart: {
