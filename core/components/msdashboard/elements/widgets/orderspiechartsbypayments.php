@@ -32,4 +32,5 @@ class msDashboardOrdersPieChartsByPayments extends modDashboardWidgetInterface
         return '<div id="msdashboard-orders-picharts_bypayments" class="msdashboard-pie-chart"></div>';
     }
 }
-return msDashboardOrdersPieChartsByPayments;
+
+return 'msDashboardOrdersPieChartsByPayments';

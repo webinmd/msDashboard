@@ -33,4 +33,5 @@ class msDashboardOrders extends modDashboardWidgetInterface
         return '<div id="msdashboard-orders-grid"></div>';
     }
 }
-return msDashboardOrders;
+
+return 'msDashboardOrders';

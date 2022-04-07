@@ -25,4 +25,5 @@ class msDashboardFullOrdersPanel extends modDashboardWidgetInterface
 		});</script>');
     }
 }
-return msDashboardFullOrdersPanel;
+
+return 'msDashboardFullOrdersPanel';

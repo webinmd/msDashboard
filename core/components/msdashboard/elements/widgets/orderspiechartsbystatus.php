@@ -37,4 +37,5 @@ class msDashboardOrdersPieChartsByStatus extends modDashboardWidgetInterface
         return '<div id="msdashboard-orders-picharts_bystatus"></div>';
     }
 }
-return msDashboardOrdersPieChartsByStatus;
+
+return 'msDashboardOrdersPieChartsByStatus';

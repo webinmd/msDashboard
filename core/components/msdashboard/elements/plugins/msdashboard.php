@@ -46,5 +46,4 @@ switch ($modx->event->name) {
         }
 
         break;
-
 }

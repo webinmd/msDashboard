@@ -3,7 +3,8 @@ require_once MODX_CORE_PATH . 'components/msdashboard/model/msdashboard.class.ph
 
 class msDashboardOrdersTimeChartsByStatus extends modDashboardWidgetInterface
 {
-    public function render() {
+    public function render()
+    {
 
         $dashboard = new msDashboard($this->modx);
         $config['connector_url'] = $dashboard->config['minishopConnectorUrl'];
@@ -17,18 +18,18 @@ class msDashboardOrdersTimeChartsByStatus extends modDashboardWidgetInterface
         $min = 0;
         $max = 10;
 
-        foreach($dataStat as $key => $value) {
+        foreach ($dataStat as $key => $value) {
 
             $categories[] = $key;
 
-            foreach($value as $in_val) {
+            foreach ($value as $in_val) {
                 $colors[] = $in_val['color'];
 
-                if($max < $in_val['count_orders']) {
+                if ($max < $in_val['count_orders']) {
                     $max = $in_val['count_orders'];
                 }
 
-                if( isset($series[$in_val['status_title']]) && $series[$in_val['status_title']]['name'] == $in_val['status_title'] ) {
+                if (isset($series[$in_val['status_title']]) && $series[$in_val['status_title']]['name'] == $in_val['status_title']) {
                     $data = $series[$in_val['status_title']]['data'];
                     array_push($data, $in_val['count_orders']);
                 } else {
@@ -47,13 +48,13 @@ class msDashboardOrdersTimeChartsByStatus extends modDashboardWidgetInterface
 
         $statuses = [];
 
-        foreach($series as $k=>$v) {
+        foreach ($series as $k => $v) {
             $statuses[] = $v;
         }
 
 
-        $cats = '"'.implode('","', $categories).'"';
-        $colorsList = '"#'.implode('","#', array_unique($colors)).'"';
+        $cats = '"' . implode('","', $categories) . '"';
+        $colorsList = '"#' . implode('","#', array_unique($colors)) . '"';
 
 
         $this->controller->addHtml('<script type="text/javascript">
@@ -62,7 +63,7 @@ class msDashboardOrdersTimeChartsByStatus extends modDashboardWidgetInterface
         	miniShop2.config = ' . json_encode($minishopConfig) . ';
             
             var options = {
-                series: '.json_encode($statuses, JSON_UNESCAPED_UNICODE).',
+                series: ' . json_encode($statuses, JSON_UNESCAPED_UNICODE) . ',
                 chart: {
                     height: 284,
                     width: "97%",
@@ -79,7 +80,7 @@ class msDashboardOrdersTimeChartsByStatus extends modDashboardWidgetInterface
                       show: false
                     }
               },
-              colors: ['.$colorsList.'],
+              colors: [' . $colorsList . '],
               dataLabels: {
                 enabled: true,
               },
@@ -87,7 +88,7 @@ class msDashboardOrdersTimeChartsByStatus extends modDashboardWidgetInterface
                 curve: "smooth"
               },
               title: {
-                text: "'.$this->modx->lexicon("msdashboard_timecharts_label_statuses").'",
+                text: "' . $this->modx->lexicon("msdashboard_timecharts_label_statuses") . '",
                 align: "left"
               },
               grid: {
@@ -102,14 +103,14 @@ class msDashboardOrdersTimeChartsByStatus extends modDashboardWidgetInterface
                 size: 1
               },
               xaxis: {
-                categories: ['.$cats.']
+                categories: [' . $cats . ']
               },
               yaxis: {
                 title: {
-                  text: "'.$this->modx->lexicon("msdashboard_label_orders").'"
+                  text: "' . $this->modx->lexicon("msdashboard_label_orders") . '"
                 },
-                min: '.$min.',
-                max: '.$max.'
+                min: ' . $min . ',
+                max: ' . $max . '
               },
               legend: {
                     position: "top",
@@ -126,4 +127,5 @@ class msDashboardOrdersTimeChartsByStatus extends modDashboardWidgetInterface
         return '<div id="msdashboard-orders-timeharts_bystatus"></div>';
     }
 }
-return msDashboardOrdersTimeChartsByStatus;
+
+return 'msDashboardOrdersTimeChartsByStatus';

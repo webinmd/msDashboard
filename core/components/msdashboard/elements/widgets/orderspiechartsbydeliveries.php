@@ -32,4 +32,5 @@ class msDashboardOrdersPieChartsByDeliveries extends modDashboardWidgetInterface
         return '<div id="msdashboard-orders-picharts_bydeliveries" class="msdashboard-pie-chart"></div>';
     }
 }
-return msDashboardOrdersPieChartsByDeliveries;
+
+return 'msDashboardOrdersPieChartsByDeliveries';

@@ -46,4 +46,5 @@ class msDashboardSimpleStat extends modDashboardWidgetInterface
 
     }
 }
-return msDashboardSimpleStat;
+
+return 'msDashboardSimpleStat';
