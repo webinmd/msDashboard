@@ -238,24 +238,25 @@ class msDashboard
             while ($row = $q_stats_month->stmt->fetch(PDO::FETCH_ASSOC)) {
                 $date = date_parse($row['createdon']);
 
-                // set values for empty orders
-                foreach ($statuses_list as $k => $v) {
-                    $output[$date['year'] . '-' . $date['month']][$k] = [
-                        'total_cost'    => 0,
-                        'count_orders'  => 0,
-                        'status'        => $k,
-                        'status_title'  => $v['name'],
-                        'color'         => $v['color'],
-                    ];
-                }
-
-                $output[$date['year'] . '-' . $date['month']][$row['status']] = [
+                $output[$date['year'].'-'.$date['month']][$row['status']] = [
                     'total_cost'    => $row['order_cost'],
                     'count_orders'  => $row['order_count'],
                     'status'        => $row['status'],
                     'status_title'  => $row['status_title'],
-                    'color'         => $row['color'],
+                    'color'         => $row['color']
                 ];
+              
+                foreach ($statuses_list as $k=>$v) {
+                    if(!$output[$date['year'].'-'.$date['month']][$k] ) {
+                        $output[$date['year'].'-'.$date['month']][$k] = [
+                            'total_cost'    => 0,
+                            'count_orders'  => 0,
+                            'status'        => $k,
+                            'status_title'  => $v['name'],
+                            'color'         => $v['color']
+                        ];
+                    }
+                }  
             }
         }
 
